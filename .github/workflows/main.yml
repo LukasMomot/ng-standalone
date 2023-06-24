@@ -34,7 +34,7 @@ jobs:
           name: standalone-app
       - run: |
           ls -a
-          cd cicd-playground
+          cd standalone-app
           ls -a
         name: Display folders
 
