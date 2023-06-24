@@ -1,0 +1,31 @@
+name: Build and Deploy to Azure
+on:
+  push:
+    branches: release
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run echo
+        run: "echo Starting 🚀"
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install dependencies
+        run: npm ci
+      - name: Build production
+        run: npm run build
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: standalone-app
+          path: dist
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    if: success()
+    steps:
+      - run: "Deploying... 🔥"
+
