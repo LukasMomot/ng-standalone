@@ -27,5 +27,6 @@ jobs:
     needs: build
     if: success()
     steps:
-      - run: "Deploying... 🔥"
+      - run: "echo Deploying... 🔥"
+
 
