@@ -1,4 +1,4 @@
-import { Component, Input, signal } from '@angular/core';
+import { Component, Input, computed, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -12,6 +12,8 @@ export class ExampleStandComponent {
   @Input() text: string = ''
 
   testSignal = signal('This is signal');
+
+  testSignalComputed = computed(() => this.testSignal() + ' Computed');
 
   handle() {
     console.log('Handle called');
