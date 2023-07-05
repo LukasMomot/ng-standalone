@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -9,5 +9,12 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./example-stand.component.css']
 })
 export class ExampleStandComponent {
-   @Input() text: string = ''
+  @Input() text: string = ''
+
+  testSignal = signal('This is signal');
+
+  handle() {
+    console.log('Handle called');
+    this.testSignal.set('ABC');
+  }
 }
